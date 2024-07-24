@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 150px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: black;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color: yellow;
+        }
+        button:hover{
+            color: #333;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid black;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Tax Calculator</h1>
+    <label for="income">Enter your yearly income:</label>
+    <input type="text" id="income" name="income">
+    <button onclick="calculateTax()">Calculate Tax</button>
+    <p id="result"></p>
+</div>
+    <script>
+        function calculateTax() {
+            let incomeInput = document.getElementById("income").value;
+            let income = parseFloat(incomeInput);
+
+            if (isNaN(income) || income < 0) {
+                document.getElementById("result").innerText = "Invalid input. Please enter a positive numeric value.";
+                return;
+            }
+
+            let tax;
+            if (income <= 10000) {
+                tax = income * 0.05;
+            } else if (income <= 50000) {
+                tax = income * 0.10;
+            } else if (income <= 100000) {
+                tax = income * 0.15;
+            } else {
+                tax = income * 0.20;
+            }
+
+            document.getElementById("result").innerText = `Based on an income of $${income.toFixed(2)}, the calculated tax is $${tax.toFixed(2)}.`;
+        }
+    </script>
+</body>
+</html>

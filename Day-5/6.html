@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Categorizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 250px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: black;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color:plum;
+        }
+        button:hover{
+            color: black;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid black;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Temperature Categorizer</h1>
+    <label for="temperature">Enter the temperature (°C):</label>
+    <input type="text" id="temperature" name="temperature">
+    <button onclick="categorizeTemperature()">Categorize Temperature</button>
+    <p id="result"></p>
+</div>
+    <script>
+        function categorizeTemperature() {
+            let tempInput = document.getElementById("temperature").value;
+            let temperature = parseFloat(tempInput);
+
+            if (isNaN(temperature)) {
+                document.getElementById("result").innerText = "Invalid input. Please enter a numeric value.";
+                return;
+            }
+
+            let category;
+            if (temperature < 10) {
+                category = "Cold";
+            } else if (temperature >= 10 && temperature <= 25) {
+                category = "Moderate";
+            } else {
+                category = "Hot";
+            }
+
+            document.getElementById("result").innerText = `The temperature ${temperature.toFixed(2)}°C is categorized as: ${category}.`;
+        }
+    </script>
+</body>
+</html>

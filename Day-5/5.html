@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 190px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: black;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color: palegoldenrod;
+        }
+        button:hover{
+            color: black;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid black;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Discount Calculator</h1>
+    <label for="purchaseAmount">Enter the total purchase amount:</label>
+    <input type="text" id="purchaseAmount" name="purchaseAmount">
+    <button onclick="calculateDiscount()">Calculate Discount</button>
+    <p id="result"></p>
+</div>
+    <script>
+        function calculateDiscount() {
+            let amountInput = document.getElementById("purchaseAmount").value;
+            let amount = parseFloat(amountInput);
+
+            if (isNaN(amount) || amount < 0) {
+                document.getElementById("result").innerText = "Invalid input. Please enter a positive numeric value.";
+                return;
+            }
+
+            let discount;
+            if (amount < 100) {
+                discount = 0;
+            } else if (amount >= 100 && amount <= 500) {
+                discount = 0.05; // 5% discount
+            } else if (amount > 500 && amount <= 1000) {
+                discount = 0.10; // 10% discount
+            } else if (amount > 1000) {
+                discount = 0.15; // 15% discount
+            }
+
+            let discountAmount = amount * discount;
+            let totalAfterDiscount = amount - discountAmount;
+
+            document.getElementById("result").innerText = `Total purchase amount: $${amount.toFixed(2)}\nDiscount applied: $${discountAmount.toFixed(2)}\nTotal after discount: $${totalAfterDiscount.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
