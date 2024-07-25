@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Password Strength Checker</h2>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <button onclick="checkPassword()">Check Strength</button>
+    <h3 id="strength"></h3>
+</div>
+
+<script>
+    function checkPasswordStrength(password) {
+        if (password.length < 6) {
+            return 'weak';
+        } else if (password.length <= 10) {
+            return 'medium';
+        } else {
+            return 'strong';
+        }
+    }
+
+    function checkPassword() {
+        let password = document.getElementById('password').value;
+        let strength = checkPasswordStrength(password);
+        document.getElementById('strength').innerText = `Password strength: ${strength}`;
+    }
+</script>
+
+</body>
+</html>

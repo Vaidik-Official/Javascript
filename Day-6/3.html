@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Total Bill</title>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        div{
+            height: 400px;
+            width: 500px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 20%;
+        }
+        button{
+            position: absolute;
+            left: 30%;
+            margin-top: 60px;
+            height: 30px;
+            width: 200px;
+            background: transparent;
+           border-radius: 5px;
+        }
+        #totalBill{
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Calculate Total Bill</h1>
+    <form id="billForm">
+        <label for="amount">Base Amount: </label>
+        <input type="number" id="amount" name="amount" required>
+        <button type="button" onclick="calculateTotalBill()">Calculate</button>
+    </form>
+    <p id="totalBill">Total Bill: $0.00</p>
+</div>
+
+
+    <script>
+        function calculateTotalBill() {
+    const amountInput = document.getElementById('amount');
+    const amount = parseFloat(amountInput.value);
+
+    if (isNaN(amount)) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+
+    let taxRate;
+
+    if (amount < 500) {
+        taxRate = 0.10;
+    } else if (amount >= 500 && amount <= 1000) {
+        taxRate = 0.15;
+    } else {
+        taxRate = 0.20;
+    }
+
+    const tax = amount * taxRate;
+    const totalBill = amount + tax;
+
+    const totalBillElement = document.getElementById('totalBill');
+    totalBillElement.textContent = `Total Bill: $${totalBill.toFixed(2)}`;
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Temperature Converter</h2>
+    <div class="form-group">
+        <label for="temperature">Temperature:</label>
+        <input type="number" id="temperature" name="temperature">
+    </div>
+    <div class="form-group">
+        <label for="unit">Unit:</label>
+        <select id="unit" name="unit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+        </select>
+    </div>
+    <button onclick="convertTemperature()">Convert</button>
+    <h3 id="result"></h3>
+</div>
+
+<script>
+    function convertTemperature() {
+        let temp = document.getElementById('temperature').value;
+        let unit = document.getElementById('unit').value;
+
+        if (!temp) {
+            document.getElementById('result').innerText = 'Please enter a temperature';
+            return;
+        }
+
+        temp = parseFloat(temp);
+        let result;
+
+        if (unit === 'C') {
+            result = (temp * 9/5) + 32;
+            document.getElementById('result').innerText = `${temp} °C is ${result.toFixed(2)} °F`;
+        } else if (unit === 'F') {
+            result = (temp - 32) * 5/9;
+            document.getElementById('result').innerText = `${temp} °F is ${result.toFixed(2)} °C`;
+        } else {
+            document.getElementById('result').innerText = 'Invalid unit';
+        }
+    }
+</script>
+
+</body>
+</html>

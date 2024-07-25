@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Range Checker</title>
+</head>
+<body>
+  <h1>Number Range Checker</h1>
+  
+  <label for="number">Number:</label>
+  <input type="number" id="number"><br><br>
+  
+  <label for="min">Min:</label>
+  <input type="number" id="min"><br><br>
+  
+  <label for="max">Max:</label>
+  <input type="number" id="max"><br><br>
+  
+  <button onclick="checkRange()">Check Range</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    function isInRange(number, min, max) {
+      return number >= min && number <= max;
+    }
+    
+    function checkRange() {
+      var number = parseFloat(document.getElementById('number').value);
+      var min = parseFloat(document.getElementById('min').value);
+      var max = parseFloat(document.getElementById('max').value);
+      
+      var result = isInRange(number, min, max);
+      
+      document.getElementById('result').innerText = result ? "The number is within the range." : "The number is outside the range.";
+    }
+  </script>
+</body>
+</html>
