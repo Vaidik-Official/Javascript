@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Classifier</title>
+    <script>
+        function classifyCharacter() {
+            let ch = document.getElementById('charInput').value;
+            let result = '';
+
+            if (ch >= 'A' && ch <= 'Z') {
+                result = "Uppercase letter";
+            } else if (ch >= 'a' && ch <= 'z') {
+                result = "Lowercase letter";
+            } else if (ch >= '0' && ch <= '9') {
+                result = "Digit";
+            } else {
+                result = "Special character";
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color:rebeccapurple;
+            color: white;
+        }
+        h1 {
+            color:whitesmoke;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 150px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: white;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color:white;
+        }
+        button:hover{
+            color: black    ;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid white;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>  
+        <h1>Character Classifier</h1>
+    <label for="charInput">Enter a character:</label>
+    <input type="text" id="charInput" maxlength="1">
+    <button onclick="classifyCharacter()">Classify</button>
+    <p id="result"></p>
+</div>
+  
+</body>
+</html>

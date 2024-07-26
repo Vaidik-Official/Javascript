@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Categorizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: red;
+            color: white;
+        }
+        h1 {
+            color:whitesmoke;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 150px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: yellow;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color:yellow;
+        }
+        button:hover{
+            color: black    ;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid yellow;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Age Categorizer</h1>
+    <label for="age">Enter your age:</label>
+    <input type="text" id="age" name="age">
+    <button onclick="categorizeAge()">Categorize Age</button>
+    <p id="result"></p>
+</div>
+    <script>
+        function categorizeAge() {
+            let ageInput = document.getElementById("age").value;
+            let age = parseFloat(ageInput);
+
+            if (isNaN(age) || age < 0) {
+                document.getElementById("result").innerText = "Invalid input. Please enter a positive numeric value.";
+                return;
+            }
+
+            let category;
+            if (age < 1) {
+                category = "Infant";
+            } else if (age >= 1 && age <= 12) {
+                category = "Child";
+            } else if (age >= 13 && age <= 19) {
+                category = "Teenager";
+            } else if (age >= 20 && age <= 64) {
+                category = "Adult";
+            } else if (age >= 65) {
+                category = "Senior Citizen";
+            }
+
+            document.getElementById("result").innerText = `The age category is: ${category}.`;
+        }
+    </script>
+</body>
+</html>

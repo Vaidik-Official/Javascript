@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the Largest Number</title>
+    <script>
+        function findLargest() {
+
+            var b = parseFloat(document.getElementById("b").value);
+            var c = parseFloat(document.getElementById("c").value);
+            var d = parseFloat(document.getElementById("d").value);
+
+            var largest;
+            if (a >= b && a >= c && a >= d) {
+                largest = a;
+            } else if (b >= a && b >= c && b >= d) {
+                largest = b;
+            } else if (c >= a && c >= b && c >= d) {
+                largest = c;
+            } else {
+                largest = d;
+            }
+
+            document.getElementById("result").innerHTML = "The largest number is: " + largest;
+        }
+    </script>
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+        div{
+            height: 400px;
+            width: 500px;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            left: 28%;
+            top: 20%;
+            border-radius: 10px 0px 10px 0px;
+        }
+        body{
+            background-color: chartreuse;
+        }
+button{
+    height: 40px;
+    width: 100px;
+    background: transparent;
+    border-radius: 5px 0px 5px 0px;
+    border: 2px solid black;
+
+}
+button:hover{
+    background-color:black;
+    color: white;
+    transition: 1s;
+}
+    </style>
+</head>
+<body>
+    <div>    
+        <h1>Find the Largest Number</h1>
+    <p>Enter Any Four Numbers:</p>
+    <input type="number" id="a" name="a"><br>
+    <input type="number" id="b" name="b"><br>
+    <input type="number" id="c" name="c"><br>
+    <input type="number" id="d" name="d"><br>
+    <button onclick="findLargest()">Find Largest</button>
+    <p id="result"></p>
+</div>
+
+</body>
+</html>

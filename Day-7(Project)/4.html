@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+    <script>
+        function fizzBuzz() {
+            let n = parseInt(document.getElementById('numberInput').value);
+            let result = '';
+            
+            for (let i = 1; i <= n; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    result += "FizzBuzz<br>";
+                } else if (i % 3 === 0) {
+                    result += "Fizz<br>";
+                } else if (i % 5 === 0) {
+                    result += "Buzz<br>";
+                } else {
+                    result += i + "<br>";
+                }
+            }
+
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color:rebeccapurple;
+            color: white;
+        }
+        h1 {
+            color:whitesmoke;
+        }
+        label, input, button, p {
+            display: block;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 5px;
+        }
+        button{
+            background: transparent;
+            height: 35px;
+            width: 180px;
+            font-size: 15px;
+            letter-spacing: 2px;
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+        button::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+            transition: 0.5s;
+            background-color: white;
+            z-index: -1;
+        }
+        button:hover::before{
+            height: 100%;
+            width: 100%;
+            background-color:white;
+        }
+        button:hover{
+            color: black    ;
+        }
+        div{
+            height: 300px;
+            width: 450px;
+            border: 2px solid white;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+            flex-direction: column;
+            position: absolute;
+            left: 30%;
+            top: 23%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>FizzBuzz</h1>
+    <label for="numberInput">Enter a number:</label>
+    <input type="number" id="numberInput" min="1">
+    <button onclick="fizzBuzz()">Generate FizzBuzz</button>
+    <p id="result"></p>
+</div>
+</body>
+</html>
