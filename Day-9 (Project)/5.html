@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>GPA Calculator</h1>
+    <input type="number" id="grade" placeholder="Enter grade (0-100)" min="0" max="100">
+    <button onclick="calculateGPA()">Calculate GPA</button>
+    <div id="result"></div>
+
+    <script>
+        function calculateGPA() {
+            const grade = parseFloat(document.getElementById('grade').value);
+            let gpa = "";
+
+            if (isNaN(grade) || grade < 0 || grade > 100) {
+                gpa = "Please enter a valid grade between 0 and 100.";
+            } else if (grade >= 90) {
+                gpa = "GPA: 4.0";
+            } else if (grade >= 80) {
+                gpa = "GPA: 3.0";
+            } else if (grade >= 70) {
+                gpa = "GPA: 2.0";
+            } else if (grade >= 60) {
+                gpa = "GPA: 1.0";
+            } else {
+                gpa = "GPA: 0.0";
+            }
+
+            document.getElementById('result').innerText = gpa;
+        }
+    </script>
+</body>
+</html>

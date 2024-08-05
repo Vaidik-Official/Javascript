@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Range Checker</h1>
+    <input type="number" id="num" placeholder="Enter a number">
+    <input type="number" id="min" placeholder="Enter minimum value">
+    <input type="number" id="max" placeholder="Enter maximum value">
+    <button onclick="checkRange()">Check Range</button>
+    <div id="result"></div>
+
+    <script>
+        function checkRange() {
+            const num = parseFloat(document.getElementById('num').value);
+            const min = parseFloat(document.getElementById('min').value);
+            const max = parseFloat(document.getElementById('max').value);
+            let result = "";
+
+            if (isNaN(num) || isNaN(min) || isNaN(max)) {
+                result = "Please enter valid numbers.";
+            } else if (num >= min && num <= max) {
+                result = "Within Range";
+            } else {
+                result = "Out of Range";
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>

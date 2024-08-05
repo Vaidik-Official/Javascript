@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Eligibility Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Eligibility Checker</h1>
+    <input type="number" id="income" placeholder="Enter your income" min="0">
+    <input type="number" id="score" placeholder="Enter your credit score" min="0">
+    <input type="number" id="loan" placeholder="Enter loan amount" min="0">
+    <button onclick="checkEligibility()">Check Eligibility</button>
+    <div id="result"></div>
+
+    <script>
+        function checkEligibility() {
+            const income = parseFloat(document.getElementById('income').value);
+            const score = parseFloat(document.getElementById('score').value);
+            const loan = parseFloat(document.getElementById('loan').value);
+            let result = "";
+
+            if (isNaN(income) || isNaN(score) || isNaN(loan)) {
+                result = "Please enter valid numbers.";
+            } else if (income > 50000 && score > 700 && loan < (income / 2)) {
+                result = "Eligible";
+            } else {
+                result = "Not Eligible";
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>

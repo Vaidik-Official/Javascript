@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .main{
+            height: 300px;
+            width: 500px;
+            border: 2px solid navajowhite;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <h1>Year Classifier</h1>
+    <input type="number" id="yearInput" placeholder="Enter a year">
+    <button onclick="classifyYear()">Classify Year</button>
+    <div id="result"></div>
+</div>
+
+    <script>
+        function classifyYear() {
+            const year = parseInt(document.getElementById('yearInput').value);
+            const currentYear = new Date().getFullYear();
+            let result = "";
+
+            if (isNaN(year)) {
+                result = "Please enter a valid year.";
+            } else if (year < 0) {
+                result = "Ancient";
+            } else if (year >= 1 && year <= 1500) {
+                result = "Medieval";
+            } else if (year >= 1501 && year <= currentYear) {
+                result = "Modern";
+            } else if (year > currentYear) {
+                result = "Future";
+            } else {
+                result = "Invalid year";
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
