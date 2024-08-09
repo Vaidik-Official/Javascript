@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Power</title>
+    <script>
+        function power(base, exponent) {
+            let result = 1;
+            for (let i = 0; i < exponent; i++) {
+                result *= base;
+            }
+            return result;
+        }
+
+        function calculatePower() {
+            
+            const base = parseFloat(document.getElementById('baseInput').value);
+            const exponent = parseInt(document.getElementById('exponentInput').value, 10);
+            
+            const result = power(base, exponent);
+          
+            document.getElementById('result').textContent = `${base} ^ ${exponent} = ${result}`;
+        }
+    </script>
+          <style>
+            *{
+                font-family: sans-serif ;
+            }
+            div{
+                height: 300px;
+                width: 400px;
+                border: 2px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-left: 35%;
+                margin-top: 14%;
+            }
+            button{
+                margin-top: 30px;
+                margin-left: 140px;
+                height: 30px;
+                width: 100px;
+                background: transparent;
+                border: 1px solid black;
+            }
+        </style>
+</head>
+<body>
+    <div>
+    <h1>Calculate Power</h1>
+    <form onsubmit="event.preventDefault(); calculatePower();">
+        <label for="baseInput">Base:</label>
+        <input type="number" id="baseInput" step="any" required>
+        <br>
+        <label for="exponentInput">Exponent:</label>
+        <input type="number" id="exponentInput" step="1" required>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+    <p id="result"></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Consonants</title>
+    <script>
+        function countConsonants(str) {
+            const consonantsRegex = /[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g;
+        
+            const matches = str.match(consonantsRegex);
+            
+        
+            return matches ? matches.length : 0;
+        }
+
+        function displayConsonantCount() {
+          
+            const input = document.getElementById('stringInput').value;
+            
+            
+            const count = countConsonants(input);
+       
+            document.getElementById('result').textContent = `Number of consonants: ${count}`;
+        }
+    </script>
+      <style>
+        *{
+            font-family: sans-serif ;
+        }
+        div{
+            height: 300px;
+            width: 400px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: 35%;
+            margin-top: 14%;
+        }
+        button{
+            margin-top: 30px;
+            margin-left: 140px;
+            height: 30px;
+            width: 100px;
+            background: transparent;
+            border: 1px solid black;
+        }
+    
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Count Consonants</h1>
+    <form onsubmit="event.preventDefault(); displayConsonantCount();">
+        <label for="stringInput">Enter a string:</label>
+        <input type="text" id="stringInput" required>
+        <button type="submit">Count Consonants</button>
+    </form>
+    <p id="result"></p>
+</div>
+</body>
+</html>

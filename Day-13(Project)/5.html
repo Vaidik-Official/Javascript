@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Factorial</title>
+    <script>
+        function factorial(n) {
+            let result = 1;
+            for (let i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+
+        function calculateFactorial() {
+          
+            const n = parseInt(document.getElementById('numberInput').value, 10);
+            
+  
+            const result = factorial(n);
+            
+            document.getElementById('result').textContent = `Factorial of ${n} is ${result}`;
+        }
+    </script>
+      <style>
+        *{
+            font-family: sans-serif ;
+        }
+        div{
+            height: 300px;
+            width: 400px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: 35%;
+            margin-top: 14%;
+        }
+        button{
+            margin-top: 30px;
+            margin-left: 140px;
+            height: 30px;
+            width: 100px;
+            background: transparent;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <h1>Calculate Factorial</h1>
+    <form onsubmit="event.preventDefault(); calculateFactorial();">
+        <label for="numberInput">Enter a positive integer:</label>
+        <input type="number" id="numberInput" min="0" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <p id="result"></p>
+</div>
+</body>
+</html>
