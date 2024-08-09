@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Factorial</title>
+    <script>
+        function calculateFactorial(n) {
+            if (n < 0) return 'Invalid input'; // Factorial is not defined for negative numbers
+            if (n === 0 || n === 1) return 1;
+            let factorial = 1;
+            for (let i = 2; i <= n; i++) {
+                factorial *= i;
+            }
+            return factorial;
+        }
+
+        function displayFactorial() {
+            const number = parseInt(document.getElementById('number').value, 10);
+            const factorial = calculateFactorial(number);
+            document.getElementById('result').textContent = `Factorial: ${factorial}`;
+        }
+    </script>
+    <style>
+       
+        *{
+           font-family: sans-serif;
+       }
+       div{
+       height: 370px;
+       width: 430px;
+       border: 2px solid black;
+       margin-left: 32%;
+       margin-top: 10%;
+       display: flex;
+       justify-content: space-evenly;
+       align-items: center;
+       flex-direction: column;
+       }
+       input{
+           height: 30px;
+           width: 300px;
+           background: transparent;
+           border: 1px solid black;
+           padding-left: 20px;
+           margin-top: 20px;
+           margin-left: 10px;
+        }
+       h1{
+           cursor: pointer;
+       }
+       button{
+           height: 30px;
+           width: 200px;
+           margin-top: 50px;
+           background: transparent;
+           border: 1px solid black;
+           margin-left: 25%;
+        }
+        </style>
+</head>
+<body>
+    <div>
+    <h1>Calculate Factorial</h1>
+    <form onsubmit="event.preventDefault(); displayFactorial();">
+        <label for="number">Positive Integer:</label>
+        <input type="number" id="number" min="0" required>
+        <br>
+        <button type="submit">Calculate Factorial</button>
+    </form>
+    <p id="result"></p>
+</div>
+</body>
+</html>

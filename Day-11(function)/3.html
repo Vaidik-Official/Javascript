@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Square</title>
+    <script>
+        function calculateSquare(number) {
+            return number * number;
+        }
+
+        function displaySquare() {
+            const number = parseFloat(document.getElementById('number').value);
+            const square = calculateSquare(number);
+            document.getElementById('result').textContent = `Square: ${square}`;
+        }
+    </script>
+    <style>
+       
+     *{
+        font-family: sans-serif;
+    }
+    div{
+    height: 370px;
+    width: 430px;
+    border: 2px solid black;
+    margin-left: 32%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    }
+    input{
+        height: 30px;
+        width: 300px;
+        background: transparent;
+        border: 1px solid black;
+        padding-left: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+     }
+    h1{
+        cursor: pointer;
+    }
+    button{
+        height: 30px;
+        width: 200px;
+        margin-top: 50px;
+        background: transparent;
+        border: 1px solid black;
+        margin-left: 25%;
+     }
+     </style>
+</head>
+<body>
+    <div>    <h1>Calculate Square</h1>
+    <form onsubmit="event.preventDefault(); displaySquare();">
+        <label for="number">Number:</label>
+        <input type="number" id="number" required>
+        <br>
+        <button type="submit">Calculate Square</button>
+    </form>
+    <p id="result"></p>
+</div>
+
+</body>
+</html>

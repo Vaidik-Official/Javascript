@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // JavaScript function to reset the heading text
+        function resetText() {
+            document.getElementById('heading').innerText = 'Welcome!';
+        }
+    </script>
+    <style>
+       
+        *{
+           font-family: sans-serif;
+       }
+       div{
+       height: 370px;
+       width: 450px;
+       border: 2px solid black;
+       margin-left: 32%;
+       margin-top: 10%;
+       display: flex;
+       justify-content: space-evenly;
+       align-items: center;
+       flex-direction: column;
+       }
+       h1{
+           cursor: pointer;
+       }
+       button{
+           height: 50px;
+           width: 250px;
+           margin-top: 50px;
+           background: transparent;
+           border: 1px solid black;
+           margin-left: 5%;
+        }
+        </style>
+</head>
+<body>
+    <div>   <h1 id="heading">Welcome!</h1>
+    <button onclick="resetText()">Reset</button>
+</div>
+ 
+</body>
+</html>
